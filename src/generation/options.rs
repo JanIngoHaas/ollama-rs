@@ -14,14 +14,27 @@ pub struct GenerationOptions {
     pub repeat_penalty: Option<f32>,
     pub temperature: Option<f32>,
     pub seed: Option<i32>,
-    pub stop: Option<String>,
+    pub stop: Option<Vec<String>>,
     pub tfs_z: Option<f32>,
     pub num_predict: Option<i32>,
     pub top_k: Option<u32>,
     pub top_p: Option<f32>,
+    pub frequency_penalty: Option<f32>,
+    pub presence_penalty: Option<f32>,
 }
 
 impl GenerationOptions {
+
+    pub fn frequency_penalty(mut self, frequency_penalty: f32) -> Self {
+        self.frequency_penalty = Some(frequency_penalty);
+        self
+    }
+
+    pub fn presence_penalty(mut self, presence_penalty: f32) -> Self {
+        self.presence_penalty = Some(presence_penalty);
+        self
+    }
+    
     /// Enable Mirostat sampling for controlling perplexity. (default: 0, 0 = disabled, 1 = Mirostat, 2 = Mirostat 2.0)
     pub fn mirostat(mut self, mirostat: u8) -> Self {
         self.mirostat = Some(mirostat);
@@ -89,7 +102,7 @@ impl GenerationOptions {
     }
 
     /// Sets the stop sequences to use. When this pattern is encountered the LLM will stop generating text and return. Multiple stop patterns may be set by specifying multiple separate `stop` parameters in a modelfile.
-    pub fn stop(mut self, stop: String) -> Self {
+    pub fn stop(mut self, stop: Vec<String>) -> Self {
         self.stop = Some(stop);
         self
     }
