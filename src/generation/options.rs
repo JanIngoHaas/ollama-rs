@@ -3,22 +3,22 @@ use serde::Serialize;
 /// Options for generation requests to Ollama.
 #[derive(Debug, Clone, Serialize, Default)]
 pub struct GenerationOptions {
-    pub(super) mirostat: Option<u8>,
-    pub(super) mirostat_eta: Option<f32>,
-    pub(super) mirostat_tau: Option<f32>,
-    pub(super) num_ctx: Option<u32>,
-    pub(super) num_gqa: Option<u32>,
-    pub(super) num_gpu: Option<u32>,
-    pub(super) num_thread: Option<u32>,
-    pub(super) repeat_last_n: Option<i32>,
-    pub(super) repeat_penalty: Option<f32>,
-    pub(super) temperature: Option<f32>,
-    pub(super) seed: Option<i32>,
-    pub(super) stop: Option<String>,
-    pub(super) tfs_z: Option<f32>,
-    pub(super) num_predict: Option<i32>,
-    pub(super) top_k: Option<u32>,
-    pub(super) top_p: Option<f32>,
+    pub  mirostat: Option<u8>,
+    pub mirostat_eta: Option<f32>,
+    pub mirostat_tau: Option<f32>,
+    pub num_ctx: Option<u32>,
+    pub num_gqa: Option<u32>,
+    pub num_gpu: Option<u32>,
+    pub num_thread: Option<u32>,
+    pub repeat_last_n: Option<i32>,
+    pub repeat_penalty: Option<f32>,
+    pub temperature: Option<f32>,
+    pub seed: Option<i32>,
+    pub stop: Option<String>,
+    pub tfs_z: Option<f32>,
+    pub num_predict: Option<i32>,
+    pub top_k: Option<u32>,
+    pub top_p: Option<f32>,
 }
 
 impl GenerationOptions {
